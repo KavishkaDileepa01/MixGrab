@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MixGrab
 
-## Getting Started
+Preview YouTube Mix / playlist URLs and batch-download audio as a single MP3 ZIP using **local [yt-dlp](https://github.com/yt-dlp/yt-dlp)** and **ffmpeg** (no third-party download API).
 
-First, run the development server:
+## Prerequisites
+
+- Node.js 18+
+- [yt-dlp](https://github.com/yt-dlp/yt-dlp) and **ffmpeg** on your PATH (Windows: `winget install yt-dlp.yt-dlp`, `winget install Gyan.FFmpeg`)
+
+Optional: put full paths in `.env.local`:
+
+- `YT_DLP_PATH` — path to `yt-dlp.exe`
+- `FFMPEG_PATH` — path to `ffmpeg.exe`
+
+(`npm run dev` must be restarted after changing PATH or `.env.local`.)
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Learn more
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This app is built with [Next.js](https://nextjs.org). See the [Next.js documentation](https://nextjs.org/docs).
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+BSD-2-Clause — see [LICENSE](./LICENSE) if present in the repository.
