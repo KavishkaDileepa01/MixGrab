@@ -56,6 +56,9 @@ type PlaylistPayload = {
 
 const brand = "MixGrab";
 
+const isServerlessDeploy =
+  process.env.NEXT_PUBLIC_MIXGRAB_SERVERLESS === "1";
+
 export default function Home() {
   const urlInputRef = useRef<HTMLInputElement>(null);
   const errorRef = useRef<HTMLDivElement>(null);
@@ -274,6 +277,26 @@ export default function Home() {
           </div>
         </div>
       </header>
+
+      {isServerlessDeploy ? (
+        <div
+          className="border-b border-amber-500/35 bg-amber-950/95 px-4 py-3 text-center text-sm leading-relaxed text-amber-100/95"
+          role="status"
+        >
+          <strong className="font-semibold text-amber-50">Hosted demo:</strong>{" "}
+          MixGrab needs{" "}
+          <span className="font-medium text-white">yt-dlp</span> and{" "}
+          <span className="font-medium text-white">ffmpeg</span> on the server.
+          Netlify and similar hosts cannot run them, so{" "}
+          <span className="font-medium text-white">Load mix</span> and downloads
+          will not work here. Run{" "}
+          <code className="rounded bg-black/40 px-1.5 py-0.5 text-xs text-amber-200">
+            npm run dev
+          </code>{" "}
+          on your PC (see the GitHub README), or deploy to a VPS/Docker with those
+          tools installed.
+        </div>
+      ) : null}
 
       <div className="relative flex-1 bg-grid-dark">
         <div
@@ -684,9 +707,9 @@ export default function Home() {
                   </p>
                 </article>
               ))}
-            </div>
+        </div>
           </section>
-        </main>
+      </main>
 
         <footer className="relative border-t border-zinc-800 bg-zinc-950/90 py-10 text-center text-sm text-zinc-500">
           <p>

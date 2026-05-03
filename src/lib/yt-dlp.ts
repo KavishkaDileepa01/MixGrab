@@ -3,6 +3,8 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { promisify } from "node:util";
 
+import { getYtDlpInstallHelpText } from "./mixgrab-hosting";
+
 const execFileAsync = promisify(execFile);
 
 function isEnoent(err: unknown): boolean {
@@ -55,12 +57,7 @@ export function getYtDlpCandidates(): string[] {
 }
 
 export function formatYtDlpInstallHelp(): string {
-  return [
-    "Install yt-dlp on this PC, then restart your terminal and `npm run dev`:",
-    "• Windows: winget install yt-dlp",
-    "• Or: pip install -U yt-dlp  (then add Python Scripts to PATH, or set YT_DLP_PATH to the .exe)",
-    "• If it is already installed, set YT_DLP_PATH in .env.local to the full path of yt-dlp.exe",
-  ].join("\n");
+  return getYtDlpInstallHelpText();
 }
 
 /** Run yt-dlp with argv; tries each candidate until one runs (not ENOENT). */

@@ -1,7 +1,7 @@
 import Innertube, { YTNodes } from "youtubei.js";
 
 import { parseYouTubeUrl } from "./youtube-url";
-import { execYtDlp, formatYtDlpInstallHelp } from "./yt-dlp";
+import { execYtDlp } from "./yt-dlp";
 
 export type PlaylistTrack = {
   id: string;
@@ -149,9 +149,8 @@ function shouldTryYtDlpFirst(listId: string): boolean {
 function combineErrors(a: unknown, b: unknown): Error {
   const msgA = a instanceof Error ? a.message : String(a);
   const msgB = b instanceof Error ? b.message : String(b);
-  return new Error(
-    `${msgA}\n\n---\n${msgB}\n\n${formatYtDlpInstallHelp()}`,
-  );
+  /** Help is already included in yt-dlp ENOENT errors; do not append twice. */
+  return new Error(`${msgA}\n\n---\n${msgB}`);
 }
 
 export async function resolvePlaylist(inputUrl: string): Promise<ResolvedPlaylist> {

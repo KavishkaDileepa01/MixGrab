@@ -8,6 +8,7 @@ import archiver from "archiver";
 import { NextResponse } from "next/server";
 
 import { getFfmpegBinaryPath } from "@/lib/ffmpeg-path";
+import { getFfmpegInstallHelpText } from "@/lib/mixgrab-hosting";
 import { parseYouTubeUrl } from "@/lib/youtube-url";
 import { spawnYtDlp } from "@/lib/yt-dlp";
 
@@ -81,8 +82,7 @@ export async function POST(req: Request) {
     if (!ffmpeg) {
       return NextResponse.json(
         {
-          error:
-            "ffmpeg not found. Install it (e.g. winget install Gyan.FFmpeg), restart the terminal, then `npm run dev`. Or set FFMPEG_PATH in .env.local to the full path of ffmpeg.exe",
+          error: `ffmpeg not found.\n\n${getFfmpegInstallHelpText()}`,
         },
         { status: 500 },
       );

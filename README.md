@@ -23,6 +23,14 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+## Hosting (Netlify, Vercel, etc.)
+
+**Playlist loading and ZIP downloads will not work** on typical serverless hosts: they do not include `yt-dlp` or `ffmpeg`, and this app shells out to those binaries.
+
+You can still deploy the site for a **demo UI** (with an on-page notice). For full functionality, run the app **locally** or on a **VPS / Docker** image where you install `yt-dlp` and `ffmpeg`.
+
+This repo includes [`netlify.toml`](./netlify.toml) and [`@netlify/plugin-nextjs`](https://github.com/netlify/netlify-plugin-nextjs) for Netlify builds.
+
 ## Learn more
 
 This app is built with [Next.js](https://nextjs.org). See the [Next.js documentation](https://nextjs.org/docs).
